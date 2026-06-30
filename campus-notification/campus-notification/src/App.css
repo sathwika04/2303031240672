@@ -1,0 +1,240 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f4f6fb;
+  color: #111827;
+  --surface: #ffffff;
+  --surface-alt: #f8fafc;
+  --border: #d2dce8;
+  --text-muted: #6b7280;
+  --accent: #2563eb;
+  --accent-strong: #1d4ed8;
+  --placement: #1d4ed8;
+  --result: #0f766e;
+  --event: #d97706;
+  --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #eef2ff;
+}
+
+button {
+  font: inherit;
+}
+
+.app-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 32px 24px 48px;
+}
+
+header h1 {
+  margin: 0 0 10px;
+  font-size: clamp(2rem, 2.5vw, 2.5rem);
+  line-height: 1.05;
+}
+
+header p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.summary-card {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 28px 0 32px;
+}
+
+.summary-card > div,
+.summary-card .action-button {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 20px 22px;
+  box-shadow: var(--shadow);
+}
+
+.summary-card > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.summary-card strong {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.summary-card span {
+  color: var(--text-muted);
+}
+
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  background: var(--accent);
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.action-button:hover {
+  background: var(--accent-strong);
+}
+
+.priority-inbox,
+.all-notifications {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 26px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+.priority-inbox h2,
+.all-notifications h2 {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+}
+
+.priority-inbox p,
+.all-notifications p {
+  margin: 0 0 20px;
+  color: var(--text-muted);
+}
+
+.priority-inbox ul,
+.all-notifications ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.notification-card {
+  border: 1px solid transparent;
+  border-radius: 20px;
+  padding: 20px;
+  background: var(--surface-alt);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.notification-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+.notification-card.placement {
+  border-left: 4px solid var(--placement);
+}
+
+.notification-card.result {
+  border-left: 4px solid var(--result);
+}
+
+.notification-card.event {
+  border-left: 4px solid var(--event);
+}
+
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.notification-type {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: rgba(17, 24, 39, 0.9);
+}
+
+.notification-card.placement .notification-type {
+  background: var(--placement);
+}
+
+.notification-card.result .notification-type {
+  background: var(--result);
+}
+
+.notification-card.event .notification-type {
+  background: var(--event);
+}
+
+.notification-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+}
+
+.notification-card p {
+  margin: 0 0 16px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.notification-card button {
+  border: none;
+  border-radius: 14px;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+}
+
+.notification-card button:hover {
+  background: var(--accent-strong);
+}
+
+.all-notifications li {
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: #f8fbff;
+  border: 1px solid rgba(37, 99, 235, 0.12);
+}
+
+.all-notifications li.unread {
+  background: #eff6ff;
+}
+
+.all-notifications li.read {
+  opacity: 0.75;
+}
+
+@media (max-width: 860px) {
+  .summary-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .app-container {
+    padding: 22px 16px 32px;
+  }
+
+  .notification-card,
+  .all-notifications li {
+    padding: 18px;
+  }
+}
